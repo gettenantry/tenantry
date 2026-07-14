@@ -9,7 +9,7 @@
     "url": "https://github.com/gettenantry/tenantry.git"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "packageManager": "pnpm@11.12.0",
   "scripts": {

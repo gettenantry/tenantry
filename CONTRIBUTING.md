@@ -4,7 +4,7 @@ Thanks for your interest in contributing! This guide gets you from clone to merg
 
 ## Local setup
 
-Requirements: **Node >= 20**, **pnpm >= 9** (`npm i -g pnpm`), **Docker** (for integration tests only).
+Requirements: **Node >= 22**, **pnpm >= 11** (`npm i -g pnpm`), **Docker** (for integration tests only).
 
 ```sh
 git clone https://github.com/gettenantry/tenantry

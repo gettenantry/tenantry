@@ -19,7 +19,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [20, 22]
+        # Node 20 reached end-of-life in April 2026 and pnpm 11 no longer
+        # runs on it — we test on active LTS (22) and current (24).
+        node: [22, 24]
     steps:
       - uses: actions/checkout@v4
 
