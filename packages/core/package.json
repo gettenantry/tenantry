@@ -1,6 +1,7 @@
 {
   "name": "@tenantry/core",
   "version": "0.0.0",
+  "private": true,
   "description": "ORM-agnostic multi-tenancy core for NestJS: tenant context (AsyncLocalStorage), extraction strategies, guards, decorators, and PostgreSQL RLS session management.",
   "license": "MIT",
   "author": "devanonyme42",
