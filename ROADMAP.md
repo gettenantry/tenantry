@@ -4,18 +4,18 @@
 
 The goal: the multi-tenancy solution for Prisma + NestJS that currently does not exist.
 
-- [ ] `@tenantry/core`
-  - [ ] `TenantContextService` — AsyncLocalStorage-based tenant context (`run`, `getTenantId`, `setTenantId`)
-  - [ ] `TenancyModule.forRoot()` — extraction strategies: header, JWT claim, subdomain, custom callback
-  - [ ] `@CurrentTenant()` parameter decorator
-  - [ ] `TenancyGuard` + `@Public()` bypass
-  - [ ] `RlsSessionService` — PostgreSQL session variable management, ORM-agnostic
-- [ ] `@tenantry/prisma`
-  - [ ] Prisma Client extension: automatic tenant filtering on tenant-aware models
-  - [ ] RLS session binding per transaction (`SET LOCAL app.current_tenant`)
-  - [ ] Isolation modes: **hybrid** (app filter + RLS) and **rls-only**
-  - [ ] Testcontainers integration tests proving isolation (including with a deliberately introduced app bug)
-- [ ] `apps/example-prisma` — runnable demo (REST API, docker-compose PostgreSQL)
+- [x] `@tenantry/core`
+  - [x] `TenantContextService` — AsyncLocalStorage-based tenant context (`run`, `getTenantId`, `setTenantId`)
+  - [x] `TenancyModule.forRoot()` — extraction strategies: header, JWT claim, subdomain, custom callback
+  - [x] `@CurrentTenant()` parameter decorator
+  - [x] `TenancyGuard` + `@Public()` bypass
+  - [x] `RlsSessionService` — PostgreSQL session variable management, ORM-agnostic
+- [x] `@tenantry/prisma`
+  - [x] Prisma Client extension: automatic tenant filtering on tenant-aware models
+  - [x] RLS session binding per transaction (`SET LOCAL app.current_tenant`)
+  - [x] Isolation modes: **hybrid** (app filter + RLS) and **rls-only**
+  - [x] Testcontainers integration tests proving isolation (including with a deliberately introduced app bug)
+- [x] `apps/example-prisma` — runnable demo (REST API, docker-compose PostgreSQL)
 - [ ] Documentation site on GitHub Pages
 - [ ] Published to npm with provenance
 
