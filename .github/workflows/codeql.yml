@@ -1,0 +1,47 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Weekly, Monday 06:17 UTC.
+    - cron: '17 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  # CodeQL code scanning is only available on public repositories (or with
+  # GitHub Advanced Security). This gate makes the workflow a clean no-op
+  # while the repo is private and activates it automatically once public.
+  visibility:
+    runs-on: ubuntu-latest
+    outputs:
+      public: ${{ steps.check.outputs.public }}
+    steps:
+      - id: check
+        run: echo "public=$(gh api "repos/$GITHUB_REPOSITORY" --jq 'if .private then "false" else "true" end')" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  analyze:
+    name: Analyze (javascript-typescript)
+    needs: visibility
+    if: needs.visibility.outputs.public == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:javascript-typescript'

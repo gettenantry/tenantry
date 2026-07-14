@@ -1,0 +1,44 @@
+name: Stale
+
+on:
+  schedule:
+    # Daily, 03:43 UTC.
+    - cron: '43 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-stale: 60
+          days-before-close: 14
+          stale-issue-label: stale
+          stale-pr-label: stale
+          exempt-issue-labels: security,pinned,discussion,roadmap
+          exempt-pr-labels: security,pinned
+          stale-issue-message: >
+            Hi! This issue has been quiet for 60 days, so we're marking it as
+            stale to keep the backlog focused. If it still matters to you, a
+            quick comment (even just "still relevant") will keep it open —
+            we'd genuinely like to know. Otherwise it will close automatically
+            in 14 days. Thanks for contributing to Tenantry!
+          stale-pr-message: >
+            Hi! This pull request has been inactive for 60 days, so we're
+            marking it as stale. If you'd like to continue, a rebase or a
+            comment will keep it open — and if you're stuck, tell us where and
+            we'll try to help. Otherwise it will close automatically in
+            14 days. Thanks for the time you've already put into this!
+          close-issue-message: >
+            Closing this for now since there was no activity after the stale
+            notice. This is just housekeeping, not a rejection — feel free to
+            reopen or open a fresh issue anytime. Thanks again!
+          close-pr-message: >
+            Closing this for now since there was no activity after the stale
+            notice. If you find time to pick it up again, we'll gladly reopen
+            it. Thanks again for the contribution!

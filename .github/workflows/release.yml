@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency: release-${{ github.ref }}
+
+permissions:
+  contents: write # create the version PR and GitHub releases
+  pull-requests: write # open/update the "chore: release packages" PR
+  id-token: write # npm provenance via OIDC trusted publishing
+
+jobs:
+  release:
+    name: Changesets release
+    if: github.repository == 'gettenantry/tenantry'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      # OIDC trusted publishing (npm publish --provenance without a stored
+      # token) requires npm >= 11.5. Prerequisite (one-time, on npmjs.com):
+      # each package must declare this repo + workflow as a trusted publisher
+      # under Package settings → Trusted publishing. The very first publish of
+      # a new package cannot use trusted publishing — it must be done manually
+      # (documented in CONTRIBUTING.md release notes).
+      - name: Upgrade npm for OIDC trusted publishing
+        run: npm install -g npm@latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create release PR or publish to npm
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+          title: 'chore: release packages'
+          commit: 'chore: release packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
