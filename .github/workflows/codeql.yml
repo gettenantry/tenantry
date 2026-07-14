@@ -8,6 +8,7 @@ on:
   schedule:
     # Weekly, Monday 06:17 UTC.
     - cron: '17 6 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: read
