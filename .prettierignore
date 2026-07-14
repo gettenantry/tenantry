@@ -1,0 +1,8 @@
+dist
+coverage
+node_modules
+.turbo
+.vitepress/cache
+.vitepress/dist
+pnpm-lock.yaml
+CHANGELOG.md
