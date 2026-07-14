@@ -7,8 +7,11 @@ hero:
   tagline: Tenant context, PostgreSQL Row-Level Security, and thin ORM adapters — isolation you can prove, not just hope for.
   actions:
     - theme: brand
-      text: Get started
-      link: /guide/introduction
+      text: Quickstart
+      link: /guide/quickstart
+    - theme: alt
+      text: Why Tenantry?
+      link: /comparison
     - theme: alt
       text: View on GitHub
       link: https://github.com/gettenantry/tenantry
