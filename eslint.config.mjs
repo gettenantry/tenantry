@@ -46,7 +46,7 @@ export default tseslint.config(
     files: [
       '**/*.{js,cjs,mjs}',
       '**/*.config.{ts,mts}',
-      '**/.vitepress/config.mts',
+      '**/.vitepress/**/*.{ts,mts}',
       '**/test/integration/**/*.ts',
     ],
     ...tseslint.configs.disableTypeChecked,
