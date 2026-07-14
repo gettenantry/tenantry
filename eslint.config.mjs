@@ -41,7 +41,14 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.{js,cjs,mjs}', '**/*.config.{ts,mts}', '**/.vitepress/config.mts'],
+    // Standalone config files and integration tests import generated code
+    // that may not exist at lint time — typed linting is disabled for them.
+    files: [
+      '**/*.{js,cjs,mjs}',
+      '**/*.config.{ts,mts}',
+      '**/.vitepress/config.mts',
+      '**/test/integration/**/*.ts',
+    ],
     ...tseslint.configs.disableTypeChecked,
     rules: {
       ...tseslint.configs.disableTypeChecked.rules,

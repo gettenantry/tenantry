@@ -11,6 +11,9 @@ coverage/
 # Turborepo
 .turbo/
 
+# Prisma clients generated for integration tests
+packages/prisma/test/integration/generated/
+
 # VitePress
 apps/docs/.vitepress/cache/
 apps/docs/.vitepress/dist/

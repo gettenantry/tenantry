@@ -1,0 +1,19 @@
+// Minimal schema used by the Testcontainers isolation suite.
+// The client is generated into ./generated (gitignored) by the
+// test:integration script.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("TENANTRY_TEST_DATABASE_URL")
+}
+
+model Project {
+  id       String @id @default(dbgenerated("gen_random_uuid()::text"))
+  tenantId String
+  name     String
+}
