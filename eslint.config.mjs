@@ -41,8 +41,12 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.{js,cjs,mjs}'],
+    files: ['**/*.{js,cjs,mjs}', '**/*.config.{ts,mts}', '**/.vitepress/config.mts'],
     ...tseslint.configs.disableTypeChecked,
+    rules: {
+      ...tseslint.configs.disableTypeChecked.rules,
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+    },
   },
   prettierConfig,
 );
