@@ -1,0 +1,11 @@
+{
+  "name": "@tenantry/example-prisma",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Minimal NestJS demo app showcasing @tenantry/core + @tenantry/prisma (per-tenant project management API).",
+  "license": "MIT",
+  "scripts": {
+    "build": "echo 'example-prisma: implemented in v1 (Phase 3)'",
+    "lint": "echo 'example-prisma: implemented in v1 (Phase 3)'"
+  }
+}
