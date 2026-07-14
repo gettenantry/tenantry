@@ -9,4 +9,5 @@ allowBuilds:
   esbuild: true
   prisma: true
   protobufjs: false
+  yarn: false
   ssh2: false
