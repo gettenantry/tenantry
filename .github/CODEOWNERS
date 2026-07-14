@@ -1,0 +1,7 @@
+# Default owner for everything in the repository.
+* @devanonyme42
+
+# Security-critical paths — always require the owner's review.
+/packages/core/src/rls/ @devanonyme42
+/packages/core/src/guards/ @devanonyme42
+/packages/prisma/src/ @devanonyme42

@@ -1,0 +1,24 @@
+name: Question
+description: Ask about usage, design, or anything unclear in the docs
+labels: [question]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before asking, a quick look at the [FAQ](https://github.com/gettenantry/tenantry/blob/main/apps/docs/faq.md) might save you time.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What you're building, relevant configuration, what you already tried.
+  - type: input
+    id: docs
+    attributes:
+      label: Documentation gap?
+      description: If the docs should have answered this, where did you look?

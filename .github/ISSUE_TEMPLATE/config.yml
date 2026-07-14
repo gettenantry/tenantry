@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Security vulnerability
+    url: https://github.com/gettenantry/tenantry/security/advisories/new
+    about: 'Tenant isolation issues are security issues: report them privately, never as a public issue.'

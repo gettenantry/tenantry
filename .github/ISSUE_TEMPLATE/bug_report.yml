@@ -1,0 +1,57 @@
+name: Bug report
+description: Something doesn't work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug!
+
+        ⚠️ **If this is a tenant-isolation or security issue, do NOT file it here.**
+        Use [private vulnerability reporting](https://github.com/gettenantry/tenantry/security/advisories/new) instead (see SECURITY.md).
+  - type: input
+    id: versions
+    attributes:
+      label: Package & version
+      placeholder: '@tenantry/prisma 0.1.0, @tenantry/core 0.1.0'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: 'Node 22, NestJS 11, Prisma 6.19, PostgreSQL 16'
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: The smallest schema + code that shows the problem. A repo link is even better.
+      render: TypeScript
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the full error output if any.
+    validations:
+      required: true
+  - type: dropdown
+    id: isolation
+    attributes:
+      label: Isolation mode
+      options:
+        - hybrid (default)
+        - rls-only
+        - hybrid with sessionVariable false
+        - not applicable
+    validations:
+      required: true

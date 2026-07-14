@@ -1,0 +1,35 @@
+name: Feature request
+description: Propose an improvement or a new capability
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do that Tenantry doesn't support (well)? Real use cases weigh more than hypotheticals.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would you like it to work? Sketch the API if you can.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you're using today, other designs you rejected.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - core (context, guard, extraction)
+        - prisma adapter
+        - typeorm adapter (planned)
+        - documentation
+        - other
+    validations:
+      required: true
