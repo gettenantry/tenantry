@@ -20,7 +20,7 @@ features:
   - title: Defense in depth
     details: Application-level tenant filtering combined with PostgreSQL Row-Level Security — a bug in your code no longer means a data leak.
   - title: ORM-agnostic core
-    details: Tenant context via AsyncLocalStorage, guards, and decorators live in @tenantry/core. Adapters stay thin — Prisma first, TypeORM next.
+    details: Tenant context via AsyncLocalStorage, guards, and decorators live in @tenantry/core. Adapters stay thin — Prisma and TypeORM, same guarantees, proven by a cross-adapter parity suite.
   - title: Proven isolation
     details: Integration tests against a real PostgreSQL (Testcontainers) prove tenant A can never read tenant B's rows — even with a deliberately introduced bug.
 ---

@@ -38,7 +38,7 @@ export default defineConfig({
         text: 'Adapters',
         items: [
           { text: 'Prisma', link: '/guide/prisma' },
-          { text: 'TypeORM (v2)', link: '/guide/typeorm' },
+          { text: 'TypeORM', link: '/guide/typeorm' },
           { text: 'Adapter comparison', link: '/guide/adapters' },
         ],
       },
@@ -47,6 +47,7 @@ export default defineConfig({
         items: [
           { text: '@tenantry/core', link: '/reference/core' },
           { text: '@tenantry/prisma', link: '/reference/prisma' },
+          { text: '@tenantry/typeorm', link: '/reference/typeorm' },
         ],
       },
       {

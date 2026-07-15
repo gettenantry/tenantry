@@ -32,6 +32,6 @@ Both are supported (`peerDependencies: ^10 || ^11`). One difference: the middlew
 
 Application-level filtering (hybrid mode with `sessionVariable: false`) works with any Prisma datasource. The RLS layer is PostgreSQL-specific. Native support for other engines' row-security mechanisms has no timeline — tell us your use case in an issue.
 
-## When is v1 on npm? When TypeORM?
+## When is v1 on npm?
 
-v1 ships once the docs and release pipeline are final — the code and tests are on `main` today. TypeORM (v2) starts after v1 is published; follow the [milestones](https://github.com/gettenantry/tenantry/milestones).
+v1 ships once the release pipeline is final — the code, tests and docs are on `main` today, covering **both** the Prisma and TypeORM adapters. Follow the [milestones](https://github.com/gettenantry/tenantry/milestones).

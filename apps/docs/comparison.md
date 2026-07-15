@@ -8,7 +8,7 @@ For multi-tenancy in NestJS you have, broadly: [`nestjs-mtenant`](https://github
 
 |                                                   | Tenantry                                                                                                                                                  | nestjs-mtenant                                                                                | Hand-rolled      |
 | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------- |
-| ORM support                                       | Prisma (v1) · TypeORM planned (v2)                                                                                                                        | Sequelize, TypeORM                                                                            | whatever you use |
+| ORM support                                       | Prisma · TypeORM                                                                                                                                          | Sequelize, TypeORM                                                                            | whatever you use |
 | **Prisma support**                                | ✅                                                                                                                                                        | ❌                                                                                            | DIY              |
 | Context mechanism                                 | `AsyncLocalStorage`                                                                                                                                       | request-scoped + decorators                                                                   | varies           |
 | **PostgreSQL RLS management**                     | ✅ first-class (session binding + policy DDL)                                                                                                             | ❌                                                                                            | rarely done      |
@@ -32,7 +32,8 @@ Tenantry's answer to each is structural, not disciplinary: AND-merged filters th
 
 ## When Tenantry is NOT the right choice
 
-- You need **Sequelize** today → `nestjs-mtenant` covers it; Tenantry's Sequelize adapter is a v3 candidate, driven by demand.
-- You need **schema-per-tenant or database-per-tenant** today → planned with the TypeORM adapter (v2); not available yet.
-- You're not on **PostgreSQL** → the application-level filtering works anywhere Prisma runs, but the RLS layer — half the value proposition — is PostgreSQL-only.
-- You need **hierarchical tenancy** (org → tenant) → v3 candidate, [vote here](https://github.com/gettenantry/tenantry/issues/16).
+- You need **Sequelize** today → `nestjs-mtenant` covers it; Tenantry's Sequelize adapter is a post-v1 candidate, driven by demand.
+- You're not on **PostgreSQL** → application-level filtering works anywhere Prisma/TypeORM run, but the RLS and schema-per-tenant layers — much of the value proposition — are PostgreSQL-only.
+- You need **hierarchical tenancy** (org → tenant) → a post-v1 candidate, [vote here](https://github.com/gettenantry/tenantry/issues/16).
+
+(Need schema-per-tenant? The [TypeORM adapter](/guide/typeorm) ships it today.)
