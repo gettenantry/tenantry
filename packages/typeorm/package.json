@@ -1,0 +1,76 @@
+{
+  "name": "@tenantry/typeorm",
+  "version": "0.0.0",
+  "private": true,
+  "description": "TypeORM adapter for Tenantry: tenant-stamping subscriber, tenant-scoped repository, and three isolation strategies — hybrid (filter + RLS), RLS-only, and schema-per-tenant.",
+  "license": "MIT",
+  "author": "devanonyme42",
+  "homepage": "https://github.com/gettenantry/tenantry/tree/main/packages/typeorm#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gettenantry/tenantry.git",
+    "directory": "packages/typeorm"
+  },
+  "bugs": {
+    "url": "https://github.com/gettenantry/tenantry/issues"
+  },
+  "keywords": [
+    "nestjs",
+    "typeorm",
+    "multi-tenancy",
+    "multitenancy",
+    "tenant",
+    "saas",
+    "row-level-security",
+    "rls",
+    "schema-per-tenant",
+    "postgresql"
+  ],
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest",
+    "test:integration": "vitest run --config vitest.integration.config.ts"
+  },
+  "dependencies": {
+    "@tenantry/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "typeorm": "^0.3.17"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.15.43",
+    "@testcontainers/postgresql": "^10.24.0",
+    "@types/node": "^26.1.1",
+    "@vitest/coverage-v8": "^3.1.1",
+    "pg": "^8.16.0",
+    "reflect-metadata": "^0.2.2",
+    "tsup": "^8.4.0",
+    "typeorm": "^0.3.28",
+    "vitest": "^3.1.1"
+  }
+}
