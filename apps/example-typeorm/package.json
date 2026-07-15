@@ -1,0 +1,30 @@
+{
+  "name": "@tenantry/example-typeorm",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Mirror of example-prisma built with TypeORM — same routes, same core API, same guarantees.",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint src",
+    "start": "node dist/main.js",
+    "dev": "pnpm build && node --watch dist/main.js",
+    "db:init": "node dist/db-init.js",
+    "db:seed": "node dist/seed.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.14",
+    "@nestjs/core": "^11.1.14",
+    "@nestjs/platform-express": "^11.1.14",
+    "@tenantry/core": "workspace:*",
+    "@tenantry/typeorm": "workspace:*",
+    "pg": "^8.16.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "^5.9.3"
+  }
+}
