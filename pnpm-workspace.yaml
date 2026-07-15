@@ -1,6 +1,7 @@
 packages:
   - 'packages/*'
   - 'apps/*'
+  - 'tests/*'
 allowBuilds:
   '@prisma/client': true
   '@prisma/engines': true
