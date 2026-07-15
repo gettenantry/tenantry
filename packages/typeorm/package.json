@@ -1,6 +1,6 @@
 {
   "name": "@tenantry/typeorm",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "TypeORM adapter for Tenantry: tenant-stamping subscriber, tenant-scoped repository, and three isolation strategies — hybrid (filter + RLS), RLS-only, and schema-per-tenant.",
   "license": "MIT",

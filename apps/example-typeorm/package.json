@@ -1,6 +1,6 @@
 {
   "name": "@tenantry/example-typeorm",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Mirror of example-prisma built with TypeORM — same routes, same core API, same guarantees.",
   "license": "MIT",
