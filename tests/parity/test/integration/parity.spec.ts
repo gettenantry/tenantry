@@ -9,11 +9,12 @@ import 'reflect-metadata';
 import { PostgreSqlContainer, type StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import { MissingTenantError, RlsSessionService, runWithTenant } from '@tenantry/core';
 import { createTenancyExtension } from '@tenantry/prisma';
-import { createTenantRepository, createTenantSubscriber, TenantAware } from '@tenantry/typeorm';
-import { Column, DataSource, Entity, PrimaryColumn } from 'typeorm';
+import { createTenantRepository, createTenantSubscriber } from '@tenantry/typeorm';
+import { DataSource } from 'typeorm';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import { PrismaClient } from './generated/client';
+import { ProjectEntity } from './project.entity';
 
 const TENANT_A = 'tenant-a';
 const TENANT_B = 'tenant-b';
@@ -36,14 +37,6 @@ interface AdapterHarness {
   rawUnfiltered(tenant: string): Promise<{ tenantId: string }[]>;
   /** Must reject with MissingTenantError. */
   listWithoutTenant(): Promise<unknown>;
-}
-
-@TenantAware()
-@Entity({ name: 'Project' })
-class ProjectEntity {
-  @PrimaryColumn('text') id!: string;
-  @Column('text') tenantId!: string;
-  @Column('text') name!: string;
 }
 
 let container: StartedPostgreSqlContainer;

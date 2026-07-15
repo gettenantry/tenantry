@@ -12,7 +12,7 @@ import 'reflect-metadata';
 
 import { PostgreSqlContainer, type StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import { MissingTenantError, RlsSessionService, runWithTenant } from '@tenantry/core';
-import { DataSource } from 'typeorm';
+import { DataSource, IsNull, Not } from 'typeorm';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { createTenantRepository, createTenantSubscriber } from '../../src';
@@ -113,8 +113,11 @@ describe.each(['hybrid', 'rls-only'] as const)('isolation mode: %s', (isolation)
   it('criteria updates never touch another tenant', async () => {
     const source = await appDataSource();
     const projects = createTenantRepository(source, Project, { isolation });
+    // A non-empty, match-all criteria: TypeORM forbids an empty `where` on
+    // update, and in rls-only mode Tenantry does not add one (the policy
+    // scopes the write), so the caller provides one that spans their rows.
     await runWithTenant(TENANT_A, async () =>
-      projects.update({}, { name: `renamed-${isolation}` }),
+      projects.update({ id: Not(IsNull()) }, { name: `renamed-${isolation}` }),
     );
     const bRows = await admin.query(`SELECT name FROM "Project" WHERE "tenantId" = 'tenant-b'`);
     expect((bRows as { name: string }[]).map((r) => r.name).sort()).toEqual([
