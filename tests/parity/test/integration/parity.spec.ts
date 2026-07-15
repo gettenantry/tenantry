@@ -80,8 +80,11 @@ async function typeormHarness(): Promise<AdapterHarness> {
     entities: [ProjectEntity],
     synchronize: false,
   });
-  source.subscribers.push(createTenantSubscriber());
   await source.initialize();
+  // Register the subscriber AFTER initialize: initialize() rebuilds the
+  // subscribers array from the DataSource options, which would drop one
+  // pushed beforehand.
+  source.subscribers.push(createTenantSubscriber());
   disposers.push(() => source.destroy());
   const repo = createTenantRepository(source, ProjectEntity);
   return {

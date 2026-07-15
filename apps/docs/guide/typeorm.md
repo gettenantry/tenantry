@@ -19,8 +19,8 @@ export class Project {
 }
 
 const dataSource = new DataSource({ /* ... */ entities: [Project] });
-dataSource.subscribers.push(createTenantSubscriber());
 await dataSource.initialize();
+dataSource.subscribers.push(createTenantSubscriber()); // AFTER initialize — see note
 
 const projects = createTenantRepository(dataSource, Project, { isolation: 'hybrid' });
 
@@ -28,6 +28,10 @@ await runWithTenant('acme', async () => projects.find()); // scoped to acme
 ```
 
 The `TenantBaseRepository` returned by `createTenantRepository` is a real `Repository<Project>` — every method you know works, the tenant-aware ones just enforce the boundary.
+
+::: warning Register the subscriber AFTER `initialize()`
+`createTenantSubscriber()` returns an _instance_ (it carries runtime options), so push it onto `dataSource.subscribers` **after** `dataSource.initialize()`. Pushing before — or relying on the `subscribers` option, which is typed for classes only — means `initialize()` rebuilds the array and drops it. See [example-typeorm](https://github.com/gettenantry/tenantry/blob/main/apps/example-typeorm/src/database.ts) for the pattern.
+:::
 
 ## Classifying entities
 

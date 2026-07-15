@@ -15,7 +15,7 @@ Metadata lives in module-scoped registries — no `reflect-metadata` dependency,
 function createTenantSubscriber(options?: TenantryTypeOrmOptions): TenantSubscriber;
 ```
 
-Returns an `EntitySubscriberInterface`. Push it onto `dataSource.subscribers`. Enforces writes on tenant-aware entities:
+Returns an `EntitySubscriberInterface` instance. Register it with `dataSource.subscribers.push(createTenantSubscriber())` **after** `dataSource.initialize()` (before it, `initialize()` rebuilds the array and drops the instance). Enforces writes on tenant-aware entities:
 
 - `beforeInsert` — stamps the tenant column from context (overwriting supplied values);
 - `beforeUpdate` — throws `CrossTenantOperationError` on cross-tenant updates or tenant rebinding;

@@ -2,7 +2,7 @@ import { Injectable, type OnModuleDestroy, type OnModuleInit } from '@nestjs/com
 import { createTenantRepository, type TenantBaseRepository } from '@tenantry/typeorm';
 import { type DataSource } from 'typeorm';
 
-import { createDataSource } from './database';
+import { createDataSource, initializeDataSource } from './database';
 import { Project } from './project.entity';
 
 /**
@@ -22,7 +22,7 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
   );
 
   async onModuleInit(): Promise<void> {
-    await this.dataSource.initialize();
+    await initializeDataSource(this.dataSource);
   }
 
   async onModuleDestroy(): Promise<void> {
