@@ -29,11 +29,11 @@ A forgotten `WHERE tenant_id = ?` should be a non-event, not a data breach. Tena
 
 ## Packages
 
-| Package                               | Description                                                                                                                                                | Status                                                       |
-| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [`@tenantry/core`](packages/core)     | ORM-agnostic core: tenant context (`AsyncLocalStorage`), extraction strategies (header, JWT, subdomain, custom), guard, decorators, RLS session management | 🚧 v1 — 100% test coverage                                   |
-| [`@tenantry/prisma`](packages/prisma) | Prisma Client extension: automatic tenant filtering + hybrid/RLS-only isolation modes                                                                      | 🚧 v1 — 100% test coverage                                   |
-| `@tenantry/typeorm`                   | TypeORM adapter: subscriber + repository filtering, schema-per-tenant, RLS                                                                                 | 📋 [v2](https://github.com/gettenantry/tenantry/milestone/2) |
+| Package                                 | Description                                                                                                                                                | Status                     |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [`@tenantry/core`](packages/core)       | ORM-agnostic core: tenant context (`AsyncLocalStorage`), extraction strategies (header, JWT, subdomain, custom), guard, decorators, RLS session management | 🚧 v1 — 100% test coverage |
+| [`@tenantry/prisma`](packages/prisma)   | Prisma Client extension: automatic tenant filtering + hybrid/RLS-only isolation modes                                                                      | 🚧 v1 — 100% test coverage |
+| [`@tenantry/typeorm`](packages/typeorm) | TypeORM adapter: subscriber + repository filtering, hybrid/RLS-only/**schema-per-tenant**                                                                  | 🚧 v1 — 100% test coverage |
 
 ## Sixty seconds to isolated tenants
 

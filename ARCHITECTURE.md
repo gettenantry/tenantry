@@ -33,19 +33,21 @@ graph TB
         PEXT --> ARGS
     end
 
-    subgraph typeorm ["@tenantry/typeorm (v2, planned)"]
-        SUB["TenantSubscriber"]
-        REPO["TenantBaseRepository"]
+    subgraph typeorm ["@tenantry/typeorm"]
+        SUB["TenantSubscriber<br/>(write enforcement)"]
+        REPO["TenantBaseRepository<br/>(read + criteria-write scoping)"]
     end
 
     PEXT --> ALS
     PEXT --> RLS
-    SUB -.-> ALS
-    REPO -.-> RLS
+    SUB --> ALS
+    REPO --> ALS
+    REPO --> RLS
 
-    PG[("PostgreSQL<br/>RLS policies")]
+    PG[("PostgreSQL<br/>RLS policies · per-tenant schemas")]
     PEXT --> PG
-    REPO -.-> PG
+    REPO --> PG
+    SUB --> PG
 ```
 
 ## Request flow (v1, Prisma)
@@ -108,9 +110,12 @@ Releases are human-triggered: changesets accumulate on `main`, and a release PR 
 
 ### Monorepo layout
 
-| Path                  | Role                                                        |
-| --------------------- | ----------------------------------------------------------- |
-| `packages/core`       | `@tenantry/core` — ORM-agnostic, zero ORM dependencies      |
-| `packages/prisma`     | `@tenantry/prisma` — Prisma Client extension (v1)           |
-| `apps/example-prisma` | Runnable NestJS demo (REST API + docker-compose PostgreSQL) |
-| `apps/docs`           | VitePress site → GitHub Pages                               |
+| Path                   | Role                                                          |
+| ---------------------- | ------------------------------------------------------------- |
+| `packages/core`        | `@tenantry/core` — ORM-agnostic, zero ORM dependencies        |
+| `packages/prisma`      | `@tenantry/prisma` — Prisma Client extension                  |
+| `packages/typeorm`     | `@tenantry/typeorm` — subscriber + base repository            |
+| `apps/example-prisma`  | Runnable NestJS demo (REST API + docker-compose PostgreSQL)   |
+| `apps/example-typeorm` | Mirror demo built with TypeORM (same routes, same core API)   |
+| `tests/parity`         | Cross-adapter regression suite (same scenario, both adapters) |
+| `apps/docs`            | VitePress site → GitHub Pages                                 |
