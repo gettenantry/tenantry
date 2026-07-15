@@ -13,6 +13,7 @@ coverage/
 
 # Prisma clients generated for integration tests
 packages/prisma/test/integration/generated/
+tests/parity/test/integration/generated/
 
 # VitePress
 apps/docs/.vitepress/cache/
