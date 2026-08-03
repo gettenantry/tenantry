@@ -63,9 +63,9 @@
     "typeorm": "^0.3.17"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.43",
+    "@swc/core": "^1.15.47",
     "@testcontainers/postgresql": "^10.24.0",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.1.2",
     "@vitest/coverage-v8": "^3.1.1",
     "pg": "^8.16.0",
     "reflect-metadata": "^0.2.2",
