@@ -13,7 +13,7 @@
     "@tenantry/prisma": "workspace:*",
     "@tenantry/typeorm": "workspace:*",
     "@testcontainers/postgresql": "^10.24.0",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.2.0",
     "pg": "^8.16.0",
     "prisma": "^6.19.3",
     "reflect-metadata": "^0.2.2",
