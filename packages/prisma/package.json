@@ -63,8 +63,8 @@
     "@prisma/client": "^5.0.0 || ^6.0.0"
   },
   "devDependencies": {
-    "@nestjs/common": "^11.0.0",
-    "@prisma/client": "^6.6.0",
+    "@nestjs/common": "^11.2.1",
+    "@prisma/client": "^7.9.1",
     "@swc/core": "^1.15.43",
     "@testcontainers/postgresql": "^10.24.0",
     "@types/node": "^26.1.1",

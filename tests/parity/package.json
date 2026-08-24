@@ -8,16 +8,16 @@
     "test:integration": "prisma generate --schema test/integration/schema.prisma && vitest run --config vitest.integration.config.ts"
   },
   "devDependencies": {
-    "@prisma/client": "^6.19.3",
+    "@prisma/client": "^7.9.1",
     "@tenantry/core": "workspace:*",
     "@tenantry/prisma": "workspace:*",
     "@tenantry/typeorm": "workspace:*",
     "@testcontainers/postgresql": "^10.24.0",
     "@types/node": "^26.1.1",
-    "pg": "^8.16.0",
+    "pg": "^8.23.0",
     "prisma": "^6.19.3",
     "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.28",
+    "typeorm": "^1.1.0",
     "vitest": "^3.1.1"
   }
 }
